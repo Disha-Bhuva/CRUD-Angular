@@ -1,0 +1,48 @@
+@if (employeeList && employeeList.length > 0) {
+<div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Age</th>
+        <th>Salary</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of employeeList; track $index ) {
+
+      <tr (click)="oneditEmployee(item, $event)">
+        <td>{{ item.name }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.mobile }}</td>
+        <td>{{ item.age }}</td>
+        <td>{{ item.salary }}</td>
+        <td>
+          <mat-button-toggle-group
+            [value]="item.status"
+            aria-label="Active Status"
+            (change)="onStatusChange($event, item)"
+            (click)="$event.stopPropagation()"
+          >
+            <mat-button-toggle [value]="true">Yes</mat-button-toggle>
+            <mat-button-toggle [value]="false">No</mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="onDelete(item)">
+            delete
+          </button>
+        </td>
+      </tr>
+
+      }
+    </tbody>
+  </table>
+</div>
+} @else {
+<h5>No employee found</h5>
+}

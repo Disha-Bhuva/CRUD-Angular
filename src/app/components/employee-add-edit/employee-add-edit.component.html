@@ -1,0 +1,98 @@
+<div class="container col-md-6">
+  <div class="card mt-3">
+    <div class="card-header">
+      <h3>{{ employee ? "Update Employee" : "Add Employee" }}</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            id="name"
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Enter Name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            id="email"
+            type="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Enter Email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="mobile">Mobile:</label>
+          <input
+            id="mobile"
+            type="text"
+            class="form-control"
+            formControlName="mobile"
+            placeholder="Enter Mobile"
+          />
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input
+            id="age"
+            type="number"
+            class="form-control"
+            formControlName="age"
+            placeholder="Enter Age"
+          />
+        </div>
+        <div class="form-group">
+          <label for="salary">Salary:</label>
+          <input
+            id="salary"
+            type="number"
+            class="form-control"
+            formControlName="salary"
+            placeholder="Enter Salary"
+          />
+        </div>
+        <div class="form-group" style="margin-top: 5px; margin-bottom: 5px">
+          <!-- <label for="status" class="form-check-label">Active?</label>
+          <mat-button-toggle-group #status="matButtonToggleGroup" id="status">
+            <mat-button-toggle value="true" formControlName="status">
+              Yes
+            </mat-button-toggle>
+            <mat-button-toggle value="false" formControlName="status">
+              No
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+          {{ status.value }} -->
+
+          <label for="status" class="form-label">Active Status:</label><br />
+          <mat-button-toggle-group
+            formControlName="status"
+            aria-label="Active Status"
+          >
+            <mat-button-toggle [value]="true">Yes</mat-button-toggle>
+            <mat-button-toggle [value]="false">No</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+
+        <button
+          type="submit"
+          style="margin-right: 10px"
+          class="btn btn-primary"
+          [disabled]="empForm.invalid || !isEditMode"
+        >
+          Update
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="empForm.invalid || isEditMode"
+        >
+          Add
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

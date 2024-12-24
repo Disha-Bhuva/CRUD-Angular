@@ -1,0 +1,20 @@
+<mat-tab-group [(selectedIndex)]="selectedIndex">
+  <mat-tab label="Employee List">
+    <app-employee-list
+      (editEmployee)="onEditEmployee($event)"
+      (switchToEmployeeListTab)="onDeleteEmployee()"
+    >
+      ></app-employee-list
+    >
+  </mat-tab>
+
+  <mat-tab [label]="isEditMode ? 'Edit Employee' : 'Add Employee'">
+    <app-employee-add-edit
+      [employee]="selectedEmployee"
+      (employeeAdded)="onEmployeeAdded()"
+      (employeeSaved)="onEmployeeSaved()"
+    >
+      ></app-employee-add-edit
+    >
+  </mat-tab>
+</mat-tab-group>
